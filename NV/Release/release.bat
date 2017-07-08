@@ -3,6 +3,8 @@
 set /p ruta=Escribe la ruta donde se crea la carpeta:
 set /p cod_pro=Codigo de Proyecto:
 
+
+
 set parent_d=%ruta%NV_%cod_pro%_%date:~0,2%%date:~3,2%%date:~6,4%
 
 mkdir %parent_d%
