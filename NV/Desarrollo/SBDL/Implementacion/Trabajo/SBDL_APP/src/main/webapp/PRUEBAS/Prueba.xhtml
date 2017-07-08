@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Facelet Title</title>
+</h:head>
+<h:form>
+	<p:spacer width="10" height="1" />
+	<h:outputLabel for="nombre" value="Nombres:" />
+	<p:spacer width="30" height="1" />
+	<p:inputText id="nombre" value="#{cRegistroAlumno.nombres}"
+		required="true" label="nombre" />
+	<p:spacer width="30" height="1" />
+
+	<p:spacer width="10" height="1" />
+	<h:outputLabel for="apellidos" value="Apellidos:" />
+	<p:spacer width="30" height="1" />
+	<p:inputText id="apellidos" value="#{cRegistroAlumno.apellidos}"
+		required="true" label="apellidos" />
+	<p:spacer width="30" height="1" />
+
+
+	<p:spacer width="10" height="1" />
+	<h:outputLabel for="telefono" value="Telefono:" />
+	<p:spacer width="10" height="1" />
+	<p:inputText id="telefono" value="#{cRegistroAlumno.telefono}"
+		required="true" label="telefono" />
+	<p:spacer width="30" height="1" />
+
+	<p:spacer width="10" height="1" />
+	<h:outputLabel for="direccion" value="Direccion:" />
+	<p:spacer width="10" height="1" />
+	<p:inputText id="direccion" value="#{cRegistroAlumno.direccion}"
+		required="true" label="direccion" />
+	<p:spacer width="10" height="1" />
+
+	<p:spacer width="10" height="1" />
+	<h:outputLabel for="fechaNac" value="Fecha Nac:" />
+	<p:spacer width="10" height="1" />
+	<p:calendar id="fechaNac" value="#{cRegistroAlumno.fechaNac}"
+		required="true" label="fechaNac" />
+	<p:spacer width="10" height="1" />
+
+	<p:spacer width="10" height="1" />
+	<h:outputLabel for="correoelectronico" value="Correo:" />
+	<p:spacer width="10" height="1" />
+	<p:inputText id="correoelectronico"
+		value="#{cRegistroAlumno.correoelectronico}" placeholder="E-mail"
+		required="true" label="correoelectronico" />
+	<p:spacer width="10" height="1" />
+
+	<p:spacer width="10" height="1" />
+	<h:outputLabel for="password" value="Password:" />
+	<p:spacer width="10" height="1" />
+	<p:password id="password" value="#{cRegistroAlumno.password}"
+		required="true" label="password" />
+	<p:spacer width="10" height="1" />
+	
+	<p:commandButton value="REGISTRAR" actionListener="#{cRegistroAlumno.registrarAlumno}"></p:commandButton>
+</h:form>
+</html>
+

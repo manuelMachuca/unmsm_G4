@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/09/2016 02:04:29 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dao.entidad.Persona" table="persona" catalog="bdchapatuprofe" optimistic-lock="version">
+        <id name="idpersona" type="java.lang.Integer">
+            <column name="IDPERSONA" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="ubigeo" class="dao.entidad.Ubigeo" fetch="select">
+            <column name="IDUBIGEO"/>
+        </many-to-one>
+        <property name="direccion" type="string">
+            <column name="DIRECCION" length="40" />
+        </property>
+        <property name="fechaNac" type="date">
+            <column name="FECHA_NAC" length="10" />
+        </property>
+        <property name="nombres" type="string">
+            <column name="NOMBRES" length="20" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="APELLIDOS" length="30" />
+        </property>
+        <property name="telefono" type="java.lang.Integer">
+            <column name="TELEFONO" />
+        </property>
+        <property name="correoelectronico" type="string">
+            <column name="CORREOELECTRONICO" length="50" />
+        </property>
+        <property name="foto" type="blob">
+            <column name="FOTO" />
+        </property>
+        <set name="docentes" table="docente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDPERSONA" not-null="true" />
+            </key>
+            <one-to-many class="dao.entidad.Docente" />
+        </set>
+        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDPERSONA" not-null="true" />
+            </key>
+            <one-to-many class="dao.entidad.Usuario" />
+        </set>
+        <set name="alumnos" table="alumno" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDPERSONA" not-null="true" />
+            </key>
+            <one-to-many class="dao.entidad.Alumno" />
+        </set>
+    </class>
+</hibernate-mapping>

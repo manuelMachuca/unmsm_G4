@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/PLANTILLA/Plantilla.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<style>
+.myNewButton {
+	font-size: 29px;
+}
+
+.mySelect {
+	font-size: 28px;
+	color: #FF5805;
+}
+
+.myStar {
+	font-size: 29px;
+}
+
+.myStarSelect {
+	font-size: 28px;
+	color: #FF5805;
+}
+
+
+.texto {
+	font-family: monospace, monospace;
+	font-size: 10px;
+}
+
+.textoOutput {
+	font-family: monospace, monospace;
+	font-size: 10px;
+	font-weight: bold;
+}
+</style>
+		<h:form id="principal">
+		
+		<p:growl id="growl" sticky="true" showDetail="true" />
+		<p:wizard id="wizardDet" showNavBar="false"
+				widgetVar="wizardDet">
+			<p:tab id="detalleCurso" title="DETALLE DEL CURSO">
+			<p:fieldset>
+
+						<p:panelGrid columns="2" style="float: left;width:250px;" >
+
+							<p:panelGrid columns="1" style="float: left;">
+							
+								<p:spacer width="10" height="1" />
+								<p:graphicImage height="100" width="130"
+										value="#{imageController.imagen}" id="image" cache="false"
+										style="border-radius: 2px">
+										<f:param
+											value="#{cFavoritoAlumno.cursoFavorito.cursoXDocente.docente.persona.idpersona}"
+											name="photo_id"></f:param>
+									</p:graphicImage>
+								<p:spacer width="10" height="1" />
+							</p:panelGrid>
+							<p:panelGrid columns="1" style="float: left;width:190px;">
+
+								<p:panelGrid columns="5" style="float: left;">
+										
+										<c:forEach items="#{cFavoritoAlumno.cursoFavorito.cursoXDocente.select}"
+											var="StarSelec">
+											<p:commandLink styleClass="myNewButton"
+												update=":principal">
+												<h:outputText styleClass="mySelect" value="&#9733;" />
+											</p:commandLink>
+										</c:forEach>
+										
+										
+										<c:forEach items="#{cFavoritoAlumno.cursoFavorito.cursoXDocente.noSelect}"
+											var="StarNoSelec">
+											<p:commandLink styleClass="myNewButton"
+												update=":principal">
+												<h:outputText styleClass="myNewButton" value="&#9733;" />
+											</p:commandLink>
+										</c:forEach>
+									
+								</p:panelGrid>
+								
+								<p:panelGrid columns="1" style=" text-align:center;width:190px;">
+									<p:outputLabel value="#{''.concat('Cantidad puntaje: ').concat(cFavoritoAlumno.cursoFavorito.cursoXDocente.valoraciones)}"
+									 styleClass="textoOutput"/>								
+								</p:panelGrid>	
+								<p:spacer width="10" height="1" />
+								<p:spacer width="10" height="1" />
+							</p:panelGrid>
+
+							<p:panelGrid columns="1" style="float: left;">
+								
+								<p:panelGrid columns="2" style="float: left;">
+									<p:outputLabel styleClass="textoOutput">NOMBRES:</p:outputLabel>
+									<p:outputLabel styleClass="texto" value="#{cFavoritoAlumno.cursoFavorito.cursoXDocente.docente.persona.nombres}" />
+									<p:outputLabel styleClass="textoOutput">APELLIDOS:</p:outputLabel>
+									<p:outputLabel styleClass="texto" value="#{cFavoritoAlumno.cursoFavorito.cursoXDocente.docente.persona.apellidos}"/>
+									<p:outputLabel styleClass="textoOutput">CELULAR:</p:outputLabel>
+									<p:outputLabel styleClass="texto" value="#{cFavoritoAlumno.cursoFavorito.cursoXDocente.docente.persona.telefono}"/>
+									<p:outputLabel styleClass="textoOutput">FIJO:</p:outputLabel>
+									<p:outputLabel styleClass="texto">NO TIENE</p:outputLabel>
+								</p:panelGrid>
+
+								<p:spacer width="10" height="1" /><p:spacer width="10" height="1" />
+							</p:panelGrid>
+
+							<p:panelGrid columns="1" style="float: left;">
+								<p:panelGrid columns="2" style="float: left;">
+									<p:outputLabel styleClass="textoOutput">CURSO:</p:outputLabel>
+									<p:outputLabel styleClass="texto"  value="#{cFavoritoAlumno.cursoFavorito.cursoXDocente.curso.nombre}"/>
+									<p:outputLabel styleClass="textoOutput">NIVEL:</p:outputLabel>
+									<p:outputLabel styleClass="texto"  value="#{cFavoritoAlumno.cursoFavorito.cursoXDocente.curso.nivel.nombrenivel}"/>
+									<p:outputLabel styleClass="textoOutput">CATEGORIA:</p:outputLabel>
+									<p:outputLabel styleClass="texto"  value="#{cFavoritoAlumno.cursoFavorito.cursoXDocente.curso.categoria.nombrecategoria}"/>
+								</p:panelGrid>
+								<p:spacer width="10" height="1" /><p:spacer width="10" height="1" /><p:spacer width="10" height="1" />
+							</p:panelGrid>
+							
+						</p:panelGrid>
+						
+						<!--MAS DATOS BIGRAFIA-->
+						<p:panelGrid columns="1" style="float: left;width:260px;">
+							<p:spacer width="10" height="1" />
+							<p:panelGrid columns="1" style="float: left; border: 1px solid #ccc;width: 200%; height:110px;">
+							<!-- MODIFICAR CON LA BASE DE DATOS -->
+								<p:outputLabel styleClass="textoOutput">BIOGRAFIA DEL PROFE:</p:outputLabel>
+								<p:outputLabel styleClass="texto" value="#{cFavoritoAlumno.cursoFavorito.cursoXDocente.docente.desc_biografia}"/>
+								<p:outputLabel styleClass="texto"></p:outputLabel>
+								<p:outputLabel styleClass="texto"></p:outputLabel>
+							</p:panelGrid>
+							<p:spacer width="10" height="1" />
+							<p:spacer width="10" height="1" />
+							<!-- BOTON COMENTAR -->
+							<p:panelGrid columns="3" style="float: left;">
+								
+								<p:commandButton disabled="true" styleClass="detalles" value="COMENTAR CURSO"
+											actionListener="#"
+											update=":principal" />
+								<p:commandButton  disabled="true" styleClass="detalles" value="REPORTAR CURSO"
+											actionListener="#"
+											update=":principal" />
+											
+								<p:commandButton icon="ui-icon-circle-close" styleClass="detalles" value="ELIMINAR FAVORITO"
+											actionListener="#{cFavoritoAlumno.eliminarDeFavoritos()}"
+											update=":principal" />
+											
+							</p:panelGrid>
+															
+							<p:panelGrid columns="1" style="float: left;width:140px;">
+								
+							</p:panelGrid>
+
+							<p:panelGrid columns="1" style="float: left;width:190px;">
+
+							</p:panelGrid>
+
+						</p:panelGrid>
+
+					</p:fieldset>
+				</p:tab>
+			</p:wizard>
+		</h:form>
+	</ui:define>
+</ui:composition>

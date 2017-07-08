@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+	<managed-bean>
+		<managed-bean-name>imageController</managed-bean-name>
+		<managed-bean-class>util.ImageController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>comentarioController</managed-bean-name>
+		<managed-bean-class>util.ComentarioController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>cCambiarPasswordProfesor</managed-bean-name>
+		<managed-bean-class>controlador.profesor.CCambiarPasswordProfesor</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>cGestionarCursosProfesor</managed-bean-name>
+		<managed-bean-class>controlador.profesor.CGestionarCursosProfesor</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>cActualizarDatosProfesor</managed-bean-name>
+		<managed-bean-class>controlador.profesor.CActualizarDatosProfesor</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+
+
+	<managed-bean>
+		<managed-bean-name>cActualizarDatPersProfesor</managed-bean-name>
+		<managed-bean-class>controlador.profesor.CActualizarDatPersProfesor</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>cRegistroAlumno</managed-bean-name>
+		<managed-bean-class>controlador.reg.CRegistroAlumno</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>cInicio</managed-bean-name>
+		<managed-bean-class>controlador.reg.CInicio</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<!-- <managed-property> -->
+		<!-- <property-name>palabraBuscada</property-name> -->
+		<!-- <value>#{param.parametro1}</value> -->
+		<!-- </managed-property> -->
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>cPresentacionAlumno</managed-bean-name>
+		<managed-bean-class>controlador.alumno.CPresentacionAlumno</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+		<managed-property>
+			<property-name>beanFavorito</property-name>
+			<value>#{cFavoritoAlumno}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- no cambiar -->
+	<managed-bean>
+		<managed-bean-name>cFavoritoAlumno</managed-bean-name>
+		<managed-bean-class>controlador.alumno.CFavoritoAlumno</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>cAccesoSistema</managed-bean-name>
+		<managed-bean-class>controlador.acceso.CAccesoSistema</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>cSeguridad</managed-bean-name>
+		<managed-bean-class>controlador.acceso.CSeguridad</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>cRegistroProfesor</managed-bean-name>
+		<managed-bean-class>controlador.reg.CRegistroProfesor</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>registroAlumno</managed-bean-name>
+		<managed-bean-class>controlador.RegistroAlumno</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+
+
+	<managed-bean>
+		<managed-bean-name>calendarView</managed-bean-name>
+		<managed-bean-class>util.CalendarView</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>passwordView</managed-bean-name>
+		<managed-bean-class>util.PasswordView</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+
+
+</faces-config>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/PLANTILLA/Plantilla.xhtml">
+    <ui:define name="metadata">
+    </ui:define>
+    <ui:define name="content">
+
+        <h:form>
+
+           
+            <br/>
+            <p:outputLabel value="TUS ULTIMOS CURSOS" 
+                           style="margin-left: 10px; font:18px 'daxcompact-mediumregular';text-align:center;" />
+            <br/>
+            <p:fieldset legend="CURSO" style="margin: 10px; font-size: 13px;">
+                <p:panelGrid columns="5" >
+                    <p:spacer width="100" height="1" />
+                    <p:panelGrid columns="1" style="margin:0;float: left;">
+                        <img src="#{request.contextPath}/resources/img/profesores/profe3.jpg" height="70" width="120"  style="border-radius: 10px;"/>
+                        <p:spacer width="150" height="1" />
+                    </p:panelGrid>
+                     
+                    <p:panelGrid columns="1" style="float: left;">
+                        <p:outputLabel value="Juan Perez Cabrera" /><p></p>
+                        <p:outputLabel value="98766778" /><p></p>
+                        <p:outputLabel value="DNI: 45674323" />
+                        <p:spacer width="225" height="1" />
+                    </p:panelGrid>
+                    <p:panelGrid columns="1" style="float: left;">   
+                        <p:outputLabel value="Literatura" /><p></p>
+                        <p:outputLabel value="3 Horas" /><p></p>
+                        <p:outputLabel value="16/09/2016" />
+                        <p:spacer width="225" height="1" />
+                    </p:panelGrid>
+                    <p:panelGrid columns="1" style="float: left;">
+                        <p:outputLabel value="Calificacion" /><p></p>
+                        <p:outputLabel value="Valorar" />
+                        <p:spacer width="225" height="1" />
+                        <p:spacer width="225" height="1" />
+                    </p:panelGrid>
+
+                </p:panelGrid>
+            </p:fieldset>
+
+            <p:fieldset legend="CURSO" style="margin: 10px; font-size: 13px;">
+                <p:panelGrid columns="5" >
+                    <p:spacer width="100" height="1" />
+                    <p:panelGrid columns="1" style="margin:0;float: left;">
+                        <img src="#{request.contextPath}/resources/img/profesores/profe1.jpg" height="70" width="120"  style="border-radius: 10px;"/>
+                        <p:spacer width="150" height="1" />
+                    </p:panelGrid>
+                     
+                    <p:panelGrid columns="1" style="float: left;">
+                        <p:outputLabel value="Juan Perez Cabrera" /><p></p>
+                        <p:outputLabel value="98766778" /><p></p>
+                        <p:outputLabel value="DNI: 45674323" />
+                        <p:spacer width="225" height="1" />
+                    </p:panelGrid>
+                    <p:panelGrid columns="1" style="float: left;">   
+                        <p:outputLabel value="Literatura" /><p></p>
+                        <p:outputLabel value="3 Horas" /><p></p>
+                        <p:outputLabel value="16/09/2016" />
+                        <p:spacer width="225" height="1" />
+                    </p:panelGrid>
+                    <p:panelGrid columns="1" style="float: left;">
+                        <p:outputLabel value="Calificacion" /><p></p>
+                        <p:outputLabel value="Valorar" />
+                        <p:spacer width="225" height="1" />
+                        <p:spacer width="225" height="1" />
+                    </p:panelGrid>
+
+                </p:panelGrid>
+            </p:fieldset>
+            <p:fieldset legend="CURSO" style="margin: 10px; font-size: 13px;">
+                <p:panelGrid columns="5" >
+                    <p:spacer width="100" height="1" />
+                    <p:panelGrid columns="1" style="margin:0;float: left;">
+                        <img src="#{request.contextPath}/resources/img/profesores/profe2.jpg" height="70" width="120" style="border-radius: 10px;"/>
+                        <p:spacer width="150" height="1" />
+                    </p:panelGrid>
+                     
+                    <p:panelGrid columns="1" style="float: left;">
+                        <p:outputLabel value="Juan Perez Cabrera" /><p></p>
+                        <p:outputLabel value="98766778" /><p></p>
+                        <p:outputLabel value="DNI: 45674323" />
+                        <p:spacer width="225" height="1" />
+                    </p:panelGrid>
+                    <p:panelGrid columns="1" style="float: left;">   
+                        <p:outputLabel value="Literatura" /><p></p>
+                        <p:outputLabel value="3 Horas" /><p></p>
+                        <p:outputLabel value="16/09/2016" />
+                        <p:spacer width="225" height="1" />
+                    </p:panelGrid>
+                    <p:panelGrid columns="1" style="float: left;">
+                        <p:outputLabel value="Calificacion" /><p></p>
+                        <p:outputLabel value="Valorar" />
+                        <p:spacer width="225" height="1" />
+                        <p:spacer width="225" height="1" />
+                    </p:panelGrid>
+
+                </p:panelGrid>
+            </p:fieldset>
+
+        </h:form>
+    </ui:define>
+</ui:composition>

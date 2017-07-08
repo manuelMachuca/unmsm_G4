@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<h:head>
+	<title>CHAPATUPROFE</title>
+
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/Plantilla.css"></link>
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/bootstrap-theme.css"></link>
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/bootstrap-theme.min.css"></link>
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/bootstrap.css"></link>
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/bootstrap.min.css"></link>
+	<link rel="shortcut icon" type="image/icon"
+		href="#{request.contextPath}/resources/img/ProfeCompu.jpg"></link>
+	<link href="https://fonts.googleapis.com/css?family=Baloo+Bhai" rel="stylesheet"></link>
+</h:head>
+
+<body style="background-image:url('#{request.contextPath}/resources/img/fondo5.jpg');">
+<div class="container-fluid">
+    <!-- Second navbar for categories -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.xhtml" style="font-family: 'Baloo Bhai', cursive; font-size: 20px;">CHAPATUPROFE.com</a>
+        </div>
+    
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.xhtml">Inicio</a></li>
+            <li><a href="Contactanos.xhtml">Contáctanos</a></li>
+            
+            <li>
+              <a href="REG/registroProfesor.xhtml" class="btn btn-info btn-outline btn-circle collapsed">Regístrate Profe!</a>
+            </li>
+            <li>
+              <a href="REG/registroAlumno.xhtml" class="btn btn-success btn-outline btn-circle collapsed">Regístrate Alumno!</a>
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+    
+</div>
+
+	<div class="container">    
+        <div class="row" style="float:left;">
+			<div class="col-xs-12 col-sm-10 " style="float:left;" >
+				
+					<h1 class="Titulo">
+						Bienvenido a CHAATUPROFE.com
+					</h1>		
+					<h3 style="color: #fff; font-size:20px; width: 70%;line-height: 1.5;">
+						Busca cursos, docentes y todo lo que necesites, recomienda a tus amigos y otras personas,  
+						encontrarás al profe que quieras y al precio que puedas. Ingresa y mira todo lo que ofrecemos, tenemos la 
+						mayor variedad que puedas encontrar en cualquier sitio.
+					</h3>	
+						
+			</div>
+		</div>
+	    <div id="loginbox" class="mainbox col-md-4" style="float:left;"> 
+	               
+	        <div class="panel panel-default" style="padding-bottom: 0px;">
+	            <div class="panel-heading" >
+	                <div class="panel-title text-center" >Ingresar al sistema</div>
+	            </div>     
+				
+				
+				
+	            <div class="panel-body" style="padding-bottom: 0px;" >
+					<p:growl id="growl" sticky="true" showDetail="true" />
+	                <h:form  name="form" id="form" class="form-horizontal" enctype="multipart/form-data" prependId="false">
+	                   
+	                  
+	                   
+	                    <div class="input-group">
+	                      
+	                        <h:outputLabel for="#{cAccesoSistema.idUsuario}" /> 
+	                        <p:inputText id="#{cAccesoSistema.idUsuario}"
+									value="#{cAccesoSistema.usuario}" 
+									required="true" style="width:310px;"
+									label="username" styleClass="grande" maxlength="30"
+									requiredMessage="Ingrese un usuario" placeholder="Usuario:"
+									validatorMessage="El dato ingresado es incorrecto" tabindex="1"> 
+							</p:inputText>                                      
+	                    </div>
+	
+	                    <div class="input-group">
+	                       
+							<h:outputLabel for="#{cAccesoSistema.idPassword}" />
+	                        <p:password  id="#{cAccesoSistema.idPassword}"
+									value="#{cAccesoSistema.password}" style="width:310px;"
+									requiredMessage="Ingrese una contraseña" required="true"
+									placeholder="Password:"
+									label="password" styleClass="grande" tabindex="2" />
+									
+									
+	                    </div> 
+						
+	                    <div class="form-group">
+	                        <!-- Button -->
+	                        <div class="col-sm-12 controls">
+	                            <div class="pull-left"> <a style="cursor: pointer ;">¿Olvidaste tu contraseña?</a></div>  
+	                            <p:commandButton id="btnLogin" value="Ingresar" action="#{cAccesoSistema.doLogin}"
+									update=":form" class="btn btn-primary" style="float:right; height:38px;" ajax="false"/>   
+	                            <br></br>
+	                            <h:link value="Ingresar como Invitado" outcome="/SEARCH/search_Invited.xhtml" />                     
+								  <center>
+									  <br></br>
+										<p:outputLabel value="#{sessionScope['LoginFailureMessage']}" rendered="#{not empty sessionScope['LoginFailureMessage']}" style="color: red"/>
+									</center>
+	                        	
+									
+	                        </div>
+	                    </div>
+	
+	                </h:form>    
+	
+	            </div>                     
+	        </div>  
+	    </div>
+	</div>
+
+<div id="particles"></div>
+
+</body>
+</html>
+

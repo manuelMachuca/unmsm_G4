@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/PLANTILLA/Plantilla.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<style>
+			.myNewButton {
+				font-size: 27px;
+			}
+			.mySelect {
+				font-size: 29px;
+				color: #ffbf00;
+			}
+			.myStar {
+				font-size: 27px;
+			}
+			.myStarSelect {
+				font-size: 29px;
+				color: #ffbf00;
+			}
+			
+			.mySelect:hover {
+				color: #FF5876;
+				font-size: 30px;
+			}
+			
+			.myNewButton:hover {
+				color: #FF5876;
+				font-size: 30px;
+			}
+			
+			.texto {
+				font-family: monospace, monospace;
+				font-size: 10px;
+			}
+			.textoOutput {
+				font-family: monospace, monospace;
+				font-size: 10px;
+				font-weight: bold;
+			}
+</style>
+		<h:form id="principal">
+			<p:growl id="growl" sticky="true" showDetail="true"/>
+			<p:wizard id="wizardInfoCurProfe" showNavBar="false"
+				widgetVar="wizardInfoCurProfe">
+				<p:tab id="tabListarCursos" title="CURSOS ANTES BUSCADOS">
+				
+					<c:forEach items="#{cPresentacionAlumno.listaUltimosCursos}"
+						var="CurProfDeAlumno">
+						<!-- Cuando un alumno ve mostrar detalles se agrega a esta lista -->
+						<p:fieldset class="field" legend="#{CurProfDeAlumno.curso.nombre}"
+							style="margin: 10px; font-size: 13px;">
+							<p:panelGrid columns="5">
+								<p:spacer width="100" height="1" />
+								<p:panelGrid columns="1" style="margin:0;float: left;">
+									<p:graphicImage height="85" width="110"
+										value="#{imageController.imagen}" id="ima" cache="false"
+										style="border-radius: 2px">
+										<f:param
+											value="#{CurProfDeAlumno.docente.persona.idpersona}"
+											name="photo_id"></f:param>
+									</p:graphicImage>
+									<p:spacer width="150" height="1" />
+								</p:panelGrid>
+
+								<p:panelGrid columns="1" style="float: left;width:260px;">
+
+									<p:panelGrid columns="3" style="float: left;">
+										<p:outputLabel styleClass="textoOutput">NOMBRES:</p:outputLabel>
+										<p:spacer width="0" height="2" />
+										<p:outputLabel styleClass="texto"
+											value="#{CurProfDeAlumno.docente.persona.nombres}" />
+									</p:panelGrid>
+									<p:panelGrid columns="3" style="float: left;">
+										<p:outputLabel styleClass="textoOutput">APELLIDOS: </p:outputLabel>
+										<p:outputLabel styleClass="texto"
+											value="#{CurProfDeAlumno.docente.persona.apellidos}" />
+									</p:panelGrid>
+
+									<p:panelGrid columns="3" style="float: left;">
+										<p:outputLabel styleClass="textoOutput">FECHA</p:outputLabel>
+										<p:spacer width="25" height="2" />
+										<p:outputLabel styleClass="texto" 
+										value="#{CurProfDeAlumno.fecha}" />
+									</p:panelGrid>
+
+									<br></br>
+								</p:panelGrid>
+								<p:panelGrid columns="1" style="float: left; width:240px;">
+									<p:panelGrid columns="3" style="float: left;">
+										<p:outputLabel styleClass="textoOutput" value="CURSO:" />
+										<p:spacer width="10" height="2" />
+										<p:outputLabel styleClass="texto"
+											value="#{CurProfDeAlumno.curso.nombre}" />
+									</p:panelGrid>
+									<p:panelGrid columns="2" style="float: left;">
+										<p:outputLabel styleClass="textoOutput" value="CATEGORIA:" />
+										<p:outputLabel styleClass="texto"
+											value="#{CurProfDeAlumno.curso.categoria.nombrecategoria}" />
+									</p:panelGrid>
+
+									<p:panelGrid columns="3" style="float: left;">
+										<p:outputLabel styleClass="textoOutput" value="NIVEL:" />
+										<p:spacer width="10" height="2" />
+										<p:outputLabel styleClass="texto"
+											value="#{CurProfDeAlumno.curso.nivel.nombrenivel}" />
+									</p:panelGrid>
+
+									<br></br>
+								</p:panelGrid>
+								<p:panelGrid columns="1" style="float: left;width:200px;">
+
+									<p:panelGrid  columns="5" style="float: left;" >
+										<c:forEach items="#{CurProfDeAlumno.select}"
+											var="StarSelec">
+											<p:commandLink styleClass="myNewButton"
+												title="#{'Votar con '.concat(StarSelec).concat(' estrellas')}" 
+												action="#{cPresentacionAlumno.valorarCurso(CurProfDeAlumno,StarSelec)}"
+												update=":principal">
+												<h:outputText styleClass="mySelect" value="&#9733;" />
+											</p:commandLink>
+										</c:forEach>
+										
+										
+										<c:forEach items="#{CurProfDeAlumno.noSelect}"
+											var="StarNoSelec">
+											<p:commandLink styleClass="myNewButton"
+												title="#{'Votar con '.concat(StarNoSelec).concat(' estrellas')}" 
+												action="#{cPresentacionAlumno.valorarCurso(CurProfDeAlumno,StarNoSelec)}"
+												update=":principal">
+												<h:outputText styleClass="myNewButton" value="&#9733;" />
+											</p:commandLink>
+										</c:forEach>
+
+
+									</p:panelGrid>
+									<p:panelGrid columns="4" style="float: left;">
+										<p:spacer></p:spacer>
+										<p:commandButton icon="ui-icon-zoomin" value="Detalle"
+											actionListener="#{cPresentacionAlumno.verDetalles(CurProfDeAlumno)}"
+											update=":principal" >
+											<f:actionListener
+												binding="#{comentarioController.setCursoXDocente(curso_Profesor)}" />
+										</p:commandButton>
+										<p:commandButton icon="ui-icon-circle-close" 
+											actionListener="#{cPresentacionAlumno.eliminarInfoDetalle(CurProfDeAlumno)}"
+											update=":principal" />
+											
+										<p:commandButton styleClass="delete" icon="ui-icon-heart" 
+											actionListener="#{cPresentacionAlumno.agregarAFavoritos(CurProfDeAlumno)}"
+											update=":principal" />
+									</p:panelGrid>
+ 									<p:spacer width="1" height="1" /> 
+								</p:panelGrid>
+							</p:panelGrid>
+						</p:fieldset>
+
+					</c:forEach>
+
+
+
+				</p:tab>
+				<p:tab id="detalleCurso" title="DETALLE DEL CURSO">
+					<p:fieldset>
+
+						<p:panelGrid columns="2" style="float: left;width:250px;" >
+
+							<p:panelGrid columns="1" style="float: left;">
+							
+								<p:spacer width="10" height="1" />
+								<p:graphicImage height="100" width="130"
+										value="#{imageController.imagen}" id="image" cache="false"
+										style="border-radius: 2px">
+										<f:param
+											value="#{cPresentacionAlumno.cursoSeleccionado.docente.persona.idpersona}"
+											name="photo_id"></f:param>
+									</p:graphicImage>
+								<p:spacer width="10" height="1" />
+							</p:panelGrid>
+							<p:panelGrid columns="1" style="float: left;width:190px;">
+
+								<p:panelGrid columns="5" style="float: left;">
+								
+										<c:forEach items="#{cPresentacionAlumno.cursoSeleccionado.select}"
+											var="StarSelec">
+											<p:commandLink 
+												update=":principal">
+												<h:outputText styleClass="myStarSelect" value="&#9733;" />
+											</p:commandLink>
+										</c:forEach>
+										
+										
+										<c:forEach items="#{cPresentacionAlumno.cursoSeleccionado.noSelect}"
+											var="StarNoSelec">
+											<p:commandLink 
+												update=":principal">
+												<h:outputText styleClass="myStar" value="&#9733;" />
+											</p:commandLink>
+										</c:forEach>
+								</p:panelGrid>
+								
+								<p:panelGrid columns="1" style=" text-align:center;width:190px;">
+									<p:outputLabel 
+										value="#{''.concat('Cantidad puntaje: ').concat(cPresentacionAlumno.cursoXDocente.valoraciones)}" 
+										styleClass="textoOutput"/>								
+								</p:panelGrid>	
+								<p:spacer width="10" height="1" />
+								<p:spacer width="10" height="1" />
+							</p:panelGrid>
+
+							<p:panelGrid columns="1" style="float: left;">
+								
+								<p:panelGrid columns="2" style="float: left;">
+									<p:outputLabel styleClass="textoOutput">NOMBRES:</p:outputLabel>
+									<p:outputLabel styleClass="texto" value="#{cPresentacionAlumno.cursoXDocente.docente.persona.nombres}" />
+									<p:outputLabel styleClass="textoOutput">APELLIDOS:</p:outputLabel>
+									<p:outputLabel styleClass="texto" value="#{cPresentacionAlumno.cursoXDocente.docente.persona.apellidos}"/>
+									<p:outputLabel styleClass="textoOutput">CELULAR:</p:outputLabel>
+									<p:outputLabel styleClass="texto" value="#{cPresentacionAlumno.cursoXDocente.docente.persona.telefono}"/>
+									<p:outputLabel styleClass="textoOutput">FIJO:</p:outputLabel>
+									<p:outputLabel styleClass="texto">5545774</p:outputLabel>
+								</p:panelGrid>
+
+								<p:spacer width="10" height="1" /><p:spacer width="10" height="1" />
+							</p:panelGrid>
+
+							<p:panelGrid columns="1" style="float: left;">
+								<p:panelGrid columns="2" style="float: left;">
+									<p:outputLabel styleClass="textoOutput">CURSO:</p:outputLabel>
+									<p:outputLabel styleClass="texto"  value="#{cPresentacionAlumno.cursoXDocente.curso.nombre}"/>
+									<p:outputLabel styleClass="textoOutput">NIVEL:</p:outputLabel>
+									<p:outputLabel styleClass="texto"  value="#{cPresentacionAlumno.cursoXDocente.curso.categoria.nombrecategoria}"/>
+									<p:outputLabel styleClass="textoOutput">CATEGORIA:</p:outputLabel>
+									<p:outputLabel styleClass="texto"  value="#{cPresentacionAlumno.cursoXDocente.curso.nivel.nombrenivel}"/>
+								</p:panelGrid>
+								<p:spacer width="10" height="1" /><p:spacer width="10" height="1" /><p:spacer width="10" height="1" />
+							</p:panelGrid>
+							
+						</p:panelGrid>
+						
+						<!--MAS DATOS BIGRAFIA-->
+						<p:panelGrid columns="1" style="float: left;width:260px;">
+							<p:spacer width="10" height="1" />
+							<p:panelGrid columns="1" style="float: left; border: 1px solid #ccc;width: 200%; height:110px;">
+							<!-- MODIFICAR CON LA BASE DE DATOS -->
+								<p:outputLabel styleClass="textoOutput">BIOGRAFIA DEL PROFE:</p:outputLabel>
+								<p:outputLabel styleClass="texto" value="#{cPresentacionAlumno.cursoXDocente.docente.desc_biografia}"/>
+								<p:outputLabel styleClass="texto"></p:outputLabel>
+								<p:outputLabel styleClass="texto"></p:outputLabel>
+							</p:panelGrid>
+							<p:spacer width="10" height="1" />
+							
+							<!-- BOTON COMENTAR -->
+							<p:panelGrid columns="2" style="float: left;">
+								<p:spacer width="10" height="1" /><p:spacer width="10" height="1" />
+								<p:commandButton disabled="true" styleClass="detalles" value="COMENTAR CURSO"
+											actionListener="#"
+											update=":principal" />
+								<p:commandButton  disabled="true" styleClass="detalles" value="REPORTAR CURSO"
+											actionListener="#"
+											update=":principal" />
+							</p:panelGrid>
+															
+							<p:panelGrid columns="1" style="float: left;width:140px;"/>
+							<p:panelGrid columns="1" style="float: left;width:190px;"/>
+
+						</p:panelGrid>
+
+					</p:fieldset>
+					<br />
+					<p:commandButton value="Volver" style="margin-left:8px;"
+							icon="ui-icon-arrowreturn-1-w" onclick="PF('wizardInfoCurProfe').back();" />
+					
+					<br></br><br></br>
+					
+						<p:panelGrid columns="1" style="float :left;">
+							<p:inputTextarea placeholder="Añadir un comentario"
+								value="#{comentarioController.comentario.comentario}"
+								style="width:800px;"></p:inputTextarea>
+							<p:panelGrid columns="4" style="float:right">
+								<p:spacer></p:spacer>
+								<p:spacer></p:spacer>
+								<h:outputLabel value="#{comentarioController.usuario}"></h:outputLabel>
+								<p:commandButton value="Comentar" update=":principal"
+									actionListener="#{comentarioController.insertarComentario()}">
+								</p:commandButton>
+							</p:panelGrid>
+
+							<c:forEach items="#{comentarioController.listaComentarios}"
+								var="comentario">
+								
+								<p:inputTextarea style="width:800px; background-color:#CDCDCD;" readonly="true"
+									value="#{comentario.comentario}"></p:inputTextarea>
+								<h:outputLabel value="#{comentario.usuario.concat(' - ').concat(comentario.fecha)}"></h:outputLabel>
+								
+								<br></br>
+							</c:forEach>
+						</p:panelGrid>
+					
+				</p:tab>
+			</p:wizard>
+			<br></br>
+		</h:form>
+	</ui:define>
+</ui:composition>
