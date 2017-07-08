@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Acceso al sistema</title>
+                <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/resetearcss.css" />
+                <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/login-principal.css" />
+                <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/login.css" />
+            <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/tipografias.css" />
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+           <div id="bn-contenidos">
+		<div id="cabecera">
+			
+		</div>
+		
+		<div id="cuerpo">
+			
+			
+			<div id="limp" class="limpiar" style="font-size:10px !important">
+				<h:form id="form" prependId="false">
+					<p:growl id="mensajes" sticky="true" showDetail="true" />
+					<h2>Ingreso al Sistema</h2>
+					<br />
+					
+					<div class="etiquetas-form">
+						<div class="limpiar">
+							<h:outputLabel value="Usuario:"
+								styleClass="grande" />
+							<p:inputText id="user"
+								required="true"
+								label="username" styleClass="grande" maxlength="10"
+								requiredMessage="Ingrese un usuario"
+								validatorMessage="El dato ingresado para 'N° de CDC' no es correcto, ingrese solo números">
+								<f:validateRegex
+									pattern="(([0-9]|[A-Z]|[a-z]|á|é|í|ó|ú|ñ|Ñ|Á|É|Í|Ó|Ú)*)" />
+							</p:inputText>
+						</div>
+
+						<div class="limpiar">
+							<h:outputLabel  value="Contraseña:" />
+							<p:password id="DFDFDFDSS"
+								value="DFDFDFD"
+								requiredMessage="Ingrese una contraseña" required="true"
+								label="password" styleClass="grande" />
+						</div>
+						<p:commandButton id="btnLogin" value="Ingresar"
+							update=":form:mensajes" styleClass="commandButton" ajax="false"/>
+					</div>
+					<div id="contacto" class="generar-clave-chica">
+                                            <img src="#{request.contextPath}/resources/img/plantillaBN/chica.png" width="155" height="160"/>
+						<div class="generar-clave-contenido">
+							<p>
+								Si no recuerda su contraseña, comuniquese al anexo: <span>11111</span>
+							</p>
+							<p>
+								o env&iacute;e un correo a <span>soportetecnico@chapatuprofe.com</span>
+							</p>
+						</div>
+					</div>
+				</h:form>
+			</div>
+
+			<div id="border-inferior">
+				<img src="#{request.contextPath}/resources/img/border-inferior.jpg" />
+			</div>
+
+			<div id="pie-pagina">SOFTPERU - UNMSM, Lima -
+				Per&uacute;. &copy; 2016 Todos los derechos reservados
+				</div>
+		</div>
+	</div>
+        </h:body>
+
+    </f:view>
+</html>
+

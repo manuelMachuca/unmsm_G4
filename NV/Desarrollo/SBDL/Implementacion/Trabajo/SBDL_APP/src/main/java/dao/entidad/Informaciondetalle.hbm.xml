@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/09/2016 02:04:29 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dao.entidad.Informaciondetalle" table="informaciondetalle" catalog="bdchapatuprofe" optimistic-lock="version">
+        <composite-id name="id" class="dao.entidad.InformaciondetalleId">
+            <key-property name="idcurso" type="int">
+                <column name="IDCURSO" />
+            </key-property>
+            <key-property name="idalumno" type="int">
+                <column name="IDALUMNO" />
+            </key-property>
+            <key-property name="iddocente" type="int">
+                <column name="IDDOCENTE" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="alumno" class="dao.entidad.Alumno" update="false" insert="false" fetch="select">
+            <column name="IDALUMNO" not-null="true" />
+        </many-to-one>
+        <many-to-one name="curso" class="dao.entidad.Curso" update="false" insert="false" fetch="select">
+            <column name="IDCURSO" not-null="true" />
+        </many-to-one>
+         <many-to-one name="docente" class="dao.entidad.Docente" update="false" insert="false" fetch="select">
+            <column name="IDDOCENTE" not-null="true" />
+        </many-to-one>
+        <property name="infoDetalle" type="string">
+            <column name="INFO_DETALLE" length="5" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="FECHA" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

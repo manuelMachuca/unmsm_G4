@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/09/2016 02:04:29 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dao.entidad.Curso" table="curso" catalog="bdchapatuprofe" optimistic-lock="version">
+        <id name="idcurso" type="java.lang.Integer">
+            <column name="IDCURSO" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="categoria" class="dao.entidad.Categoria" fetch="select">
+            <column name="IDCATEGORIA" />
+        </many-to-one>
+        <many-to-one name="nivel" class="dao.entidad.Nivel" fetch="select">
+            <column name="IDNIVEL" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="30" />
+        </property>
+        <set name="cursoXDocentes" table="curso_x_docente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCURSO" not-null="true" />
+            </key>
+            <one-to-many class="dao.entidad.CursoXDocente" />
+        </set>
+        <set name="informaciondetalles" table="informaciondetalle" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCURSO" not-null="true" />
+            </key>
+            <one-to-many class="dao.entidad.Informaciondetalle" />
+        </set>
+    </class>
+</hibernate-mapping>

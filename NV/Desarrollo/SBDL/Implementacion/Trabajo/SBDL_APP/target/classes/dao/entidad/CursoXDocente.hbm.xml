@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/09/2016 02:04:29 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dao.entidad.CursoXDocente" table="curso_x_docente" catalog="bdchapatuprofe" optimistic-lock="version">
+        <composite-id name="id" class="dao.entidad.CursoXDocenteId">
+            <key-property name="idcurDoc" type="int">
+                <column name="IDCUR_DOC" />
+            </key-property>
+            <key-property name="idcurso" type="int">
+                <column name="IDCURSO" />
+            </key-property>
+            <key-property name="iddocente" type="int">
+                <column name="IDDOCENTE" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="curso" class="dao.entidad.Curso" update="false" insert="false" fetch="select">
+            <column name="IDCURSO" not-null="true" />
+        </many-to-one>
+        <many-to-one name="docente" class="dao.entidad.Docente" update="false" insert="false" fetch="select">
+            <column name="IDDOCENTE" not-null="true" />
+        </many-to-one>
+        <set name="comentarios" table="comentario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCUR_DOC" />
+                <column name="IDCURSO" />
+                <column name="IDDOCENTE" />
+            </key>
+            <one-to-many class="dao.entidad.Comentario" />
+        </set>
+        <set name="cursoFavoritos" table="curso_favorito" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCUR_DOC" not-null="true" />
+                <column name="IDCURSO" not-null="true" />
+                <column name="IDDOCENTE" not-null="true" />
+            </key>
+            <one-to-many class="dao.entidad.CursoFavorito" />
+        </set>
+        <property name="valoraciones" type="java.lang.Integer">
+            <column name="VALORACIONES" />
+        </property>
+    </class>
+</hibernate-mapping>

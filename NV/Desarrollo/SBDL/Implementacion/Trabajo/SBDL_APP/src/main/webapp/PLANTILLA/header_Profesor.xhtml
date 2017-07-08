@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<style>
+.Vacio {
+	margin-top: 0px;
+	margin-right: 0px;
+	float: right;
+	font-weight: bold;
+}
+</style>
+	<h:form>
+		<div id="cabecera">
+			<div class="logo-foto">
+				<img src="#{request.contextPath}/resources/img/profesor.png"
+					width="80" height="60" />
+			</div>
+			<div class="logo-chapatp">CHAPATUPROFE.COM</div>
+			<div class="centrar">
+				<div class="presentacion" style="margin: 45px;">
+					<h:panelGrid columns="5">
+						<p:spacer />
+						<p:spacer />
+						<p:inputText binding="#{input1}"
+							placeholder="Escriba alguna palabra..." style="width:200px;" />
+						<p:spacer></p:spacer>
+						<p:commandButton
+							actionListener="#{cInicio.irSearchProfe(input1.value)}"
+							value="Buscar" />
+					</h:panelGrid>
+				</div>
+			</div>
+
+			<h:panelGrid columns="1" styleClass="Vacio">
+				<h:panelGrid columns="2">
+					<h:panelGrid columns="1" style="float:left; margin-right:5px;">
+						<p:outputLabel
+							style="font-family: monospace, monospace;
+											color:#fff;font-size: 15px;"
+							value="#{cSeguridad.usuario.username}" />
+						<p:outputLabel
+							style="font-family: monospace, monospace;
+											font-size: 15px;color:red;"
+							value="#{cSeguridad.usuario.nomPerfil}" />
+						<br></br>
+					</h:panelGrid>
+
+					<h:panelGrid columns="1" style="float:right;">
+						<p:graphicImage value="#{imageController.imagen}" id="ima"
+							cache="false" width="55" height="50" style="border-radius: 40px;">
+							<f:param value="#{cSeguridad.usuario.persona.idpersona}"
+								name="photo_id"></f:param>
+						</p:graphicImage>
+						
+					</h:panelGrid>
+				</h:panelGrid>
+				<h:panelGrid style="float:right; margin-right:18px;">
+					<p:growl id="messages" />
+
+					<p:splitButton value="Configuracion"
+						 update="messages"
+						icon="ui-icon-disk" style="float: left;">
+						<p:menuitem value="Ayuda" actionListener="#{buttonView.update}"
+							update="messages" icon="ui-icon-arrowrefresh-1-w" />
+						<p:menuitem value="Salir"
+							actionListener="#{cSeguridad.cerrarSesion}" ajax="false"
+							icon="ui-icon-close" />
+					</p:splitButton>
+				</h:panelGrid>
+
+			</h:panelGrid>
+
+		</div>
+		<br />
+
+	</h:form>
+
+</ui:composition>
